@@ -10,13 +10,17 @@ The directory structure of this repository is as follows:
 - P1
   - review
   - modeling
+    - session
 - P2
   - review1
+    - session
   - review2
+    - session
   - modeling
 - P3
 
 You should place your solution files in the correct subdirectories.
+The material for the review sessions will be uploaded to your repositories using the "session" folders.
 
 Furthermore, there is a file *dj_creds.md* which contains your [DOMjudge](http://domjudge-se.sts.tuhh.de)
 credentials.
