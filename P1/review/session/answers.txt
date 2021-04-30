@@ -1,0 +1,34 @@
+Task 1
+Our group chose the model "Philosophers". The reason we chose the model is because it is based on the 
+"Dining philosophers problem", which is a simple and fun illustration of the problem of resource contention,
+i.e. two programs access the same resource at the same time, and the model shows straightforwardly how
+inappropriate use of those shared resources can lead to deadlocks.
+There are 11 instances of this model, and we chose the instance of N=5, where N is the number of dining philosophers.
+
+Task 2
+Pattern 1: {Catch1_1, Fork_1} -> FF2a_1 -> Eat_1 (synchronization)
+- places "Fork_1" and "Catch1_1" have to own a token so transition "FF2a_1" can be enabled and be able
+to produce token for Eat_1
+- meaning: Fork 1 has to be unused and Philosopher 1 has to be in a state where he is able to pick up
+Fork 1 (i.e. in state "Catch1_1) as one of the conditions for Philosopher 1 to go to state "Eat"
+Pattern 2: {FF2a_1, FF2b_1} -> Eat_1 -> End_1 (meraina)
+- to produce a token for place "Eat_1", both transactions "FF2a_1" and "FF2a_1" need to be enabled
+- transaction "FF2a_1" when it consumes a token from place "Fork_1" and a token from place "Catch1_1"
+- transaction "FF2b_1" when it consumes a token from place "Fork_5" and a token from place "Catch2_1"
+- once "Eat_1" has a token, transaction "End_1" can be enabled
+- meaning: Philosopher 1 can only eat once he picked fork 1 from one side (== side a) and fork 5 from
+the other side (== side b). Philosopher 1 have to finish eating (end the "Eat" state) to be able to think again.
+Pattern 3: Fork_1 -> {FF2a_1, FF2b_2} (conflict)
+- place "Fork_1" can pass its token either to transition "FF2a_1" making it enabled and able to produce token for place "Eat_1"
+or to transition "FF2b_2" making it enabled and able to produce token for place "Eat_2"
+- meaning: depending on how Fork_1 will pass its token, either Philosopher 1 or Philosopher 2 cannot eat,
+because he is missing one fork, namely Fork_1
+
+Task 3
+Place: Fork_1
+Max. number of token(s): 1
+- place "Fork_1" represent the state of fork 1
+- "Fork_1" contains a token -> fork 1 is unused
+- "Fork_1" contains no token -> fork 1 is used by either Philosopher 1 or Philosopher 2
+- since fork 1 can either be used or unused corresponding to token or no token, so
+"Fork_1" only need one token
