@@ -32,3 +32,12 @@ Max. number of token(s): 1
 - "Fork_1" contains no token -> fork 1 is used by either Philosopher 1 or Philosopher 2
 - since fork 1 can either be used or unused corresponding to token or no token, so
 "Fork_1" only need one token
+
+
+
+Task 4
+a)
+ii) dead transition(s)
+Modification:
+- Add an arc from place "Fork_1" to transition "FF1a_1"
+Dead transition: FF2a_1
