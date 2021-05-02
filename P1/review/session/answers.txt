@@ -48,3 +48,11 @@ ii) dead transition(s)
 Modification:
 - Add an arc from place "Fork_1" to transition "FF1a_1"
 Dead transition: FF2a_1
+
+b)
+liveness:  for every transition t, from every reachable marking, one can reach a marking in which t can fire.
+
+As described in 4a.i, there is a reachable marking that is a deadlock, i.e. no transition can fire from that position / marking.
+Therefore, the liveness porperty does not hold, since no transition can fire, and we cannot reach any transition whatsoever.
+
+
