@@ -1,5 +1,5 @@
 Task 1
-Our group chose the model "Philosophers". The reason we chose the model is because it is based on the 
+Our group chose the model "Philosophers". The reason we chose the model is because it is based on the
 "Dining philosophers problem", which is a simple and fun illustration of the problem of resource contention,
 i.e. two programs access the same resource at the same time, and the model shows straightforwardly how
 inappropriate use of those shared resources can lead to deadlocks.
@@ -37,6 +37,13 @@ Max. number of token(s): 1
 
 Task 4
 a)
+i) deadlock
+There is a deadlock in the system.
+To create a deadlock, we can fire the transitions “FF1a_1”, “FF1a_2”, “FF1a_3”, “FF1a_4” and “FF1a_5” in succession.
+Now, all philosophers picked up the fork on their left side, so each philosopher only has one fork.
+With that they are not able to eat because all the forks are taken,
+and a philosopher can only go back to thinking after eating, so no transition can fire from this marking.
+
 ii) dead transition(s)
 Modification:
 - Add an arc from place "Fork_1" to transition "FF1a_1"
