@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<trace>
+  <transition id="Philosophers_dash_PT_dash_000005_FF1a_1">
+    <token age="0" place="Philosophers_dash_PT_dash_000005_Fork_5"/>
+    <token age="0" place="Philosophers_dash_PT_dash_000005_Think_1"/>
+    <token age="0" place="Philosophers_dash_PT_dash_000005_Fork_1"/>
+  </transition>
+</trace>
