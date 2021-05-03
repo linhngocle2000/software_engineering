@@ -24,13 +24,12 @@ In other words, depending on how "Fork_1" will pass its token, either Philosophe
 namely "Fork_1".
 
 Task 3
-Place: Fork_1
-Max. number of token(s): 1
-- place "Fork_1" represent the state of fork 1
-- "Fork_1" contains a token -> fork 1 is unused
-- "Fork_1" contains no token -> fork 1 is used by either Philosopher 1 or Philosopher 2
-- since fork 1 can either be used or unused corresponding to token or no token, so
-"Fork_1" only need one token
+As an example, we select Fork_1.
+The maximum number of token in Fork_1 is 1.
+The place represents the state of fork No.1 being in use.
+If Fork_1 contains a token, that means that fork No.1 is unused.
+Otherwise, if there is no token, fork No.1 is used by either philosophers 1 or 2.
+Since fork No.1 can either be used or unused, as represented by the token, the place only needs a maximum of one tokens.
 
 
 
