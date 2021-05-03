@@ -15,7 +15,8 @@ interpreted that Fork 1 has to be unused and Philosopher 1 has to be in a state 
 (i.e. in state "Catch1_1) as one of the conditions for Philosopher 1 to go to state "Eat".
 
 Pattern 2: {FF2a_1, FF2b_1} -> Eat_1 -> End_1 (merging)
-To produce a token for place "Eat_1", either transaction "FF2a_1" or "FF2b_1" need to be enabled, and in case both transactions are enabled (which is impossible for this model) the tokens produced by "FF2a_1" and "FF2b_1" will be
+To produce a token for place "Eat_1", either transaction "FF2a_1" or "FF2b_1" need to be enabled, and in case both
+transactions are enabled (which is impossible for this model) the tokens produced by "FF2a_1" and "FF2b_1" will be
 merged into one. In simple words, no matter from which side Philosopher 1 picks his fork first he can still get to
 state "Eat" because the only condition for the state "Eat" is that the Philosophers need two forks in their hands.
 
@@ -44,15 +45,24 @@ To create a deadlock, starting from "Initial Marking", we can fire the transitio
 “FF1a_4” and “FF1a_5” in succession.
 Now, all Philosophers picked up the fork on their side a, so each Philosopher only has one fork. However they are not
 able to eat because all the forks are taken, but each Philosopher need to forks to eat. The Philosophers cannot go back
-to thinking, because they can only go to thinking when they have eaten. At this point, all Philosophers cannot do anything, meaning no transition can be fired from this marking.
+to thinking, because they can only go to thinking when they have eaten. At this point, all Philosophers cannot do anything,
+meaning no transition can be fired from this marking.
 
 ii) dead transition(s)
-The model has no dead transition. To create a dead transitions, we can modify the model, by adding an arc from place "Fork_1" to transition "FF1a_1". We will obtain the dead transition "FF2a_1".
+The model has no dead transition. To create a dead transitions, we can modify the model, by adding an arc from place "Fork_1"
+to transition "FF1a_1". We will obtain the dead transition "FF2a_1".
 Explanation of the solution:
-Assume the token of "Fork_1" is passed to "Catch1_1" through "FF1a_1", i.e. Philosopher 1 is given the fork No.1 accidentally when he is picking up the fork No.5 on his side a. Initially fork No.1 is given to Philosopher 1 (when it is unused) only after Philopher 1 has picked up fork 5, meaning transition "FF2a_1" consumes a token from both "Fork_1" and "Catch1_1" to produce a token for "Eat_1", but since the token of "Fork_1" will always be consumed by "FF1a_1" beforehand, "FF2a_1" will only receive one token from "Catch1_1", and therfore "FF2a_1" will never become enabled. In other words, if Philosopher 1 pick fork No.5 on side a first, he can never eat.
+Assume the token of "Fork_1" is passed to "Catch1_1" through "FF1a_1", i.e. Philosopher 1 is given the fork No.1 accidentally
+when he is picking up the fork No.5 on his side a. Initially fork No.1 is given to Philosopher 1 (when it is unused) only
+after Philopher 1 has picked up fork 5, meaning transition "FF2a_1" consumes a token from both "Fork_1" and "Catch1_1" to
+produce a token for "Eat_1", but since the token of "Fork_1" will always be consumed by "FF1a_1" beforehand, "FF2a_1" will
+only receive one token from "Catch1_1", and therfore "FF2a_1" will never become enabled. In other words, if Philosopher 1 pick
+fork No.5 on side a first, he can never eat.
 
 b) live
 The property does not hold.
-As described in Task 4a.i, there exists at least one transition where its marking graph has a deadlock, e.g. transition "FF1a_5". Once we fire the transitions as in the sequence stated in Task 4a.i, we will reach the transition "FF1a_5", where no transitions are enabled after that. Since no transition can fire, and we cannot reach any marking.
+As described in Task 4a.i, there exists at least one transition where its marking graph has a deadlock, e.g. transition "FF1a_5".
+Once we fire the transitions as in the sequence stated in Task 4a.i, we will reach the transition "FF1a_5", where no transitions
+are enabled after that. Since no transition can fire, and we cannot reach any marking.
 
 
