@@ -6,10 +6,12 @@ inappropriate use of those shared resources can lead to deadlocks.
 There are 11 instances of this model, and we chose the instance of N=5, where N is the number of dining philosophers.
 
 Task 2
-Pattern 1: {Catch1_1, Fork_1} -> FF2a_1 -> Eat_1 (synchronization)
-- places "Fork_1" and "Catch1_1" have to own a token so transition "FF2a_1" can be enabled and be able
-to produce token for Eat_1
-- meaning: Fork 1 has to be unused and Philosopher 1 has to be in a state where he is able to pick up
+Pattern 1: {Catc Foh1_1,rk_1} -> FF2a_1 -> Eat_1 (synchronization)
+Transition "FF2a_1" has to consume tokens from the places "Fork_1" and "Catch1_1" at the same time to be enabled and be able
+to produce a token for place "Eat_1". That is why it is a synchronization pattern. This can be interpreted that Fork 1 has to
+be unused and Philosopher 1 has to be in a state where he is able to pick up Fork 1 (i.e. in state "Catch1_1) as one of the conditions
+for Philosopher 1 to go to state "Eat"
+
 Fork 1 (i.e. in state "Catch1_1) as one of the conditions for Philosopher 1 to go to state "Eat"
 Pattern 2: {FF2a_1, FF2b_1} -> Eat_1 -> End_1 (meraina)
 - to produce a token for place "Eat_1", both transactions "FF2a_1" and "FF2a_1" need to be enabled
