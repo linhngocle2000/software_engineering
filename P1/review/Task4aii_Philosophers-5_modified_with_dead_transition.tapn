@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<pnml xmlns="http://www.informatik.hu-berlin.de/top/pnml/ptNetb">
+  <net active="true" id="Philosophers_dash_PT_dash_000005" type="P/T net">
+    <place displayName="true" id="Think_1" initialMarking="1" invariant="&lt; inf" name="Think_1" nameOffsetX="-5" nameOffsetY="35" positionX="530" positionY="450"/>
+    <place displayName="true" id="Think_2" initialMarking="1" invariant="&lt; inf" name="Think_2" nameOffsetX="-5" nameOffsetY="35" positionX="130" positionY="370"/>
+    <place displayName="true" id="Think_3" initialMarking="1" invariant="&lt; inf" name="Think_3" nameOffsetX="-5" nameOffsetY="35" positionX="610" positionY="210"/>
+    <place displayName="true" id="Think_4" initialMarking="1" invariant="&lt; inf" name="Think_4" nameOffsetX="-5" nameOffsetY="35" positionX="770" positionY="530"/>
+    <place displayName="true" id="Think_5" initialMarking="1" invariant="&lt; inf" name="Think_5" nameOffsetX="-5" nameOffsetY="35" positionX="450" positionY="370"/>
+    <place displayName="true" id="Fork_1" initialMarking="1" invariant="&lt; inf" name="Fork_1" nameOffsetX="-5" nameOffsetY="35" positionX="290" positionY="370"/>
+    <place displayName="true" id="Fork_2" initialMarking="1" invariant="&lt; inf" name="Fork_2" nameOffsetX="-5" nameOffsetY="35" positionX="530" positionY="290"/>
+    <place displayName="true" id="Fork_3" initialMarking="1" invariant="&lt; inf" name="Fork_3" nameOffsetX="-5" nameOffsetY="35" positionX="770" positionY="370"/>
+    <place displayName="true" id="Fork_4" initialMarking="1" invariant="&lt; inf" name="Fork_4" nameOffsetX="-5" nameOffsetY="35" positionX="1010" positionY="450"/>
+    <place displayName="true" id="Fork_5" initialMarking="1" invariant="&lt; inf" name="Fork_5" nameOffsetX="-5" nameOffsetY="35" positionX="370" positionY="530"/>
+    <place displayName="true" id="Catch1_1" initialMarking="0" invariant="&lt; inf" name="Catch1_1" nameOffsetX="-5" nameOffsetY="35" positionX="530" positionY="610"/>
+    <place displayName="true" id="Catch1_2" initialMarking="0" invariant="&lt; inf" name="Catch1_2" nameOffsetX="-5" nameOffsetY="35" positionX="210" positionY="290"/>
+    <place displayName="true" id="Catch1_3" initialMarking="0" invariant="&lt; inf" name="Catch1_3" nameOffsetX="-5" nameOffsetY="35" positionX="690" positionY="290"/>
+    <place displayName="true" id="Catch1_5" initialMarking="0" invariant="&lt; inf" name="Catch1_5" nameOffsetX="-5" nameOffsetY="35" positionX="530" positionY="210"/>
+    <place displayName="true" id="Catch1_4" initialMarking="0" invariant="&lt; inf" name="Catch1_4" nameOffsetX="-5" nameOffsetY="35" positionX="850" positionY="530"/>
+    <place displayName="true" id="Catch2_2" initialMarking="0" invariant="&lt; inf" name="Catch2_2" nameOffsetX="-5" nameOffsetY="35" positionX="50" positionY="290"/>
+    <place displayName="true" id="Catch2_1" initialMarking="0" invariant="&lt; inf" name="Catch2_1" nameOffsetX="-5" nameOffsetY="35" positionX="690" positionY="450"/>
+    <place displayName="true" id="Catch2_4" initialMarking="0" invariant="&lt; inf" name="Catch2_4" nameOffsetX="-5" nameOffsetY="35" positionX="1170" positionY="450"/>
+    <place displayName="true" id="Catch2_3" initialMarking="0" invariant="&lt; inf" name="Catch2_3" nameOffsetX="-5" nameOffsetY="35" positionX="610" positionY="50"/>
+    <place displayName="true" id="Eat_1" initialMarking="0" invariant="&lt; inf" name="Eat_1" nameOffsetX="-5" nameOffsetY="35" positionX="210" positionY="450"/>
+    <place displayName="true" id="Catch2_5" initialMarking="0" invariant="&lt; inf" name="Catch2_5" nameOffsetX="-5" nameOffsetY="35" positionX="450" positionY="450"/>
+    <place displayName="true" id="Eat_3" initialMarking="0" invariant="&lt; inf" name="Eat_3" nameOffsetX="-5" nameOffsetY="35" positionX="610" positionY="370"/>
+    <place displayName="true" id="Eat_2" initialMarking="0" invariant="&lt; inf" name="Eat_2" nameOffsetX="-5" nameOffsetY="35" positionX="370" positionY="290"/>
+    <place displayName="true" id="Eat_5" initialMarking="0" invariant="&lt; inf" name="Eat_5" nameOffsetX="-5" nameOffsetY="35" positionX="450" positionY="610"/>
+    <place displayName="true" id="Eat_4" initialMarking="0" invariant="&lt; inf" name="Eat_4" nameOffsetX="-5" nameOffsetY="35" positionX="850" positionY="450"/>
+    <transition angle="0" displayName="true" id="FF1a_2" infiniteServer="false" name="FF1a_2" nameOffsetX="-5" nameOffsetY="35" player="0" positionX="210" positionY="370" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="FF1a_1" infiniteServer="false" name="FF1a_1" nameOffsetX="-5" nameOffsetY="35" player="0" positionX="530" positionY="530" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="FF1a_4" infiniteServer="false" name="FF1a_4" nameOffsetX="-5" nameOffsetY="35" player="0" positionX="770" positionY="450" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="FF1a_3" infiniteServer="false" name="FF1a_3" nameOffsetX="-5" nameOffsetY="35" player="0" positionX="610" positionY="290" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="FF1b_2" infiniteServer="false" name="FF1b_2" nameOffsetX="-5" nameOffsetY="35" player="0" positionX="50" positionY="370" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="FF1b_3" infiniteServer="false" name="FF1b_3" nameOffsetX="-5" nameOffsetY="35" player="0" positionX="610" positionY="130" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="FF1a_5" infiniteServer="false" name="FF1a_5" nameOffsetX="-5" nameOffsetY="35" player="0" positionX="450" positionY="210" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="FF1b_1" infiniteServer="false" name="FF1b_1" nameOffsetX="-5" nameOffsetY="35" player="0" positionX="610" positionY="450" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="FF2a_1" infiniteServer="false" name="FF2a_1" nameOffsetX="-5" nameOffsetY="35" player="0" positionX="530" positionY="690" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="FF2a_2" infiniteServer="false" name="FF2a_2" nameOffsetX="-5" nameOffsetY="35" player="0" positionX="210" positionY="210" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="FF1b_4" infiniteServer="false" name="FF1b_4" nameOffsetX="-5" nameOffsetY="35" player="0" positionX="1090" positionY="450" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="FF1b_5" infiniteServer="false" name="FF1b_5" nameOffsetX="-5" nameOffsetY="35" player="0" positionX="370" positionY="450" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="FF2a_5" infiniteServer="false" name="FF2a_5" nameOffsetX="-5" nameOffsetY="35" player="0" positionX="530" positionY="130" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="FF2b_1" infiniteServer="false" name="FF2b_1" nameOffsetX="-5" nameOffsetY="35" player="0" positionX="290" positionY="530" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="FF2a_3" infiniteServer="false" name="FF2a_3" nameOffsetX="-5" nameOffsetY="35" player="0" positionX="690" positionY="210" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="FF2a_4" infiniteServer="false" name="FF2a_4" nameOffsetX="-5" nameOffsetY="35" player="0" positionX="850" positionY="610" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="FF2b_4" infiniteServer="false" name="FF2b_4" nameOffsetX="-5" nameOffsetY="35" player="0" positionX="850" positionY="370" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="FF2b_5" infiniteServer="false" name="FF2b_5" nameOffsetX="-5" nameOffsetY="35" player="0" positionX="450" positionY="530" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="FF2b_2" infiniteServer="false" name="FF2b_2" nameOffsetX="-5" nameOffsetY="35" player="0" positionX="370" positionY="370" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="FF2b_3" infiniteServer="false" name="FF2b_3" nameOffsetX="-5" nameOffsetY="35" player="0" positionX="530" positionY="370" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="End_4" infiniteServer="false" name="End_4" nameOffsetX="-5" nameOffsetY="35" player="0" positionX="930" positionY="450" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="End_3" infiniteServer="false" name="End_3" nameOffsetX="-5" nameOffsetY="35" player="0" positionX="690" positionY="370" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="End_2" infiniteServer="false" name="End_2" nameOffsetX="-5" nameOffsetY="35" player="0" positionX="450" positionY="290" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="End_1" infiniteServer="false" name="End_1" nameOffsetX="-5" nameOffsetY="35" player="0" positionX="290" positionY="450" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="End_5" infiniteServer="false" name="End_5" nameOffsetX="-5" nameOffsetY="35" player="0" positionX="370" positionY="610" priority="0" urgent="false"/>
+    <arc id="cId150692057982413369655" inscription="1" nameOffsetX="0" nameOffsetY="0" source="End_1" target="Fork_1" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="306" yCoord="450"/>
+      <arcpath arcPointType="false" id="1" xCoord="305" yCoord="400"/>
+    </arc>
+    <arc id="cId155319013566109305754" inscription="1" nameOffsetX="0" nameOffsetY="0" source="End_1" target="Think_1" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="310" yCoord="465"/>
+      <arcpath arcPointType="false" id="1" xCoord="530" yCoord="465"/>
+    </arc>
+    <arc id="cId155319013566109305759" inscription="1" nameOffsetX="0" nameOffsetY="0" source="End_2" target="Fork_2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="470" yCoord="305"/>
+      <arcpath arcPointType="false" id="1" xCoord="530" yCoord="305"/>
+    </arc>
+    <arc id="cId155319013566109305758" inscription="1" nameOffsetX="0" nameOffsetY="0" source="End_2" target="Think_2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="460" yCoord="311"/>
+      <arcpath arcPointType="false" id="1" xCoord="159" yCoord="382"/>
+    </arc>
+    <arc id="cId155319013566109305757" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Eat_2" target="End_2" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="400" yCoord="305"/>
+      <arcpath arcPointType="false" id="1" xCoord="460" yCoord="301"/>
+    </arc>
+    <arc id="cId155319013566109305756" inscription="1" nameOffsetX="0" nameOffsetY="0" source="End_1" target="Fork_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="310" yCoord="472"/>
+      <arcpath arcPointType="false" id="1" xCoord="374" yCoord="535"/>
+    </arc>
+    <arc id="cId155319013566109305763" inscription="1" nameOffsetX="0" nameOffsetY="0" source="End_3" target="Fork_3" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="710" yCoord="385"/>
+      <arcpath arcPointType="false" id="1" xCoord="770" yCoord="385"/>
+    </arc>
+    <arc id="cId155153765244440892962" inscription="1" nameOffsetX="0" nameOffsetY="0" source="End_3" target="Think_3" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="706" yCoord="370"/>
+      <arcpath arcPointType="false" id="1" xCoord="632" yCoord="238"/>
+    </arc>
+    <arc id="cId155153765244440892961" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Eat_3" target="End_3" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="640" yCoord="385"/>
+      <arcpath arcPointType="false" id="1" xCoord="700" yCoord="391"/>
+    </arc>
+    <arc id="cId155153765244440892960" inscription="1" nameOffsetX="0" nameOffsetY="0" source="End_2" target="Fork_1" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="460" yCoord="311"/>
+      <arcpath arcPointType="false" id="1" xCoord="318" yCoord="378"/>
+    </arc>
+    <arc id="cId155153765244440892968" inscription="1" nameOffsetX="0" nameOffsetY="0" source="End_4" target="Fork_3" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="940" yCoord="461"/>
+      <arcpath arcPointType="false" id="1" xCoord="798" yCoord="392"/>
+    </arc>
+    <arc id="cId155153765244440892969" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Eat_5" target="End_5" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="450" yCoord="625"/>
+      <arcpath arcPointType="false" id="1" xCoord="390" yCoord="630"/>
+    </arc>
+    <arc id="cId155153765244440892970" inscription="1" nameOffsetX="0" nameOffsetY="0" source="End_5" target="Think_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="386" yCoord="610"/>
+      <arcpath arcPointType="false" id="1" xCoord="460" yCoord="399"/>
+    </arc>
+    <arc id="cId155153765244440892971" inscription="1" nameOffsetX="0" nameOffsetY="0" source="End_5" target="Fork_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="386" yCoord="610"/>
+      <arcpath arcPointType="false" id="1" xCoord="385" yCoord="560"/>
+    </arc>
+    <arc id="cId155153765244440892964" inscription="1" nameOffsetX="0" nameOffsetY="0" source="End_3" target="Fork_2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="700" yCoord="381"/>
+      <arcpath arcPointType="false" id="1" xCoord="558" yCoord="312"/>
+    </arc>
+    <arc id="cId155153765244440892965" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Eat_4" target="End_4" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="880" yCoord="466"/>
+      <arcpath arcPointType="false" id="1" xCoord="940" yCoord="465"/>
+    </arc>
+    <arc id="cId155153765244440892966" inscription="1" nameOffsetX="0" nameOffsetY="0" source="End_4" target="Think_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="940" yCoord="471"/>
+      <arcpath arcPointType="false" id="1" xCoord="798" yCoord="538"/>
+    </arc>
+    <arc id="cId155153765244440892967" inscription="1" nameOffsetX="0" nameOffsetY="0" source="End_4" target="Fork_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="950" yCoord="465"/>
+      <arcpath arcPointType="false" id="1" xCoord="1010" yCoord="465"/>
+    </arc>
+    <arc id="cId155153765244440892976" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Fork_1" target="FF2b_2" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="320" yCoord="386"/>
+      <arcpath arcPointType="false" id="1" xCoord="380" yCoord="391"/>
+    </arc>
+    <arc id="cId155153765244440892977" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Catch2_2" target="FF2b_2" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="79" yCoord="308"/>
+      <arcpath arcPointType="false" id="1" xCoord="380" yCoord="381"/>
+    </arc>
+    <arc id="cId155153765244440892978" inscription="1" nameOffsetX="0" nameOffsetY="0" source="FF2b_2" target="Eat_2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="386" yCoord="370"/>
+      <arcpath arcPointType="false" id="1" xCoord="385" yCoord="320"/>
+    </arc>
+    <arc id="cId155153765244440892979" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Fork_2" target="FF2b_3" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="545" yCoord="320"/>
+      <arcpath arcPointType="false" id="1" xCoord="546" yCoord="370"/>
+    </arc>
+    <arc id="cId155153765244440892972" inscription="1" nameOffsetX="0" nameOffsetY="0" source="End_5" target="Fork_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="390" yCoord="620"/>
+      <arcpath arcPointType="false" id="1" xCoord="1011" yCoord="468"/>
+    </arc>
+    <arc id="cId155153765244440892974" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Catch2_1" target="FF2b_1" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="690" yCoord="468"/>
+      <arcpath arcPointType="false" id="1" xCoord="311" yCoord="536"/>
+    </arc>
+    <arc id="cId155153765244440892975" inscription="1" nameOffsetX="0" nameOffsetY="0" source="FF2b_1" target="Eat_1" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="300" yCoord="545"/>
+      <arcpath arcPointType="false" id="1" xCoord="235" yCoord="476"/>
+    </arc>
+    <arc id="cId155153765244440892985" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Fork_4" target="FF2b_5" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="1010" yCoord="467"/>
+      <arcpath arcPointType="false" id="1" xCoord="470" yCoord="545"/>
+    </arc>
+    <arc id="cId155153765244440892984" inscription="1" nameOffsetX="0" nameOffsetY="0" source="FF2b_4" target="Eat_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="865" yCoord="400"/>
+      <arcpath arcPointType="false" id="1" xCoord="865" yCoord="450"/>
+    </arc>
+    <arc id="cId155153765244440892987" inscription="1" nameOffsetX="0" nameOffsetY="0" source="FF2b_5" target="Eat_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="465" yCoord="560"/>
+      <arcpath arcPointType="false" id="1" xCoord="465" yCoord="610"/>
+    </arc>
+    <arc id="cId155153765244440892986" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Catch2_5" target="FF2b_5" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="465" yCoord="480"/>
+      <arcpath arcPointType="false" id="1" xCoord="466" yCoord="530"/>
+    </arc>
+    <arc id="cId155153765244440892981" inscription="1" nameOffsetX="0" nameOffsetY="0" source="FF2b_3" target="Eat_3" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="550" yCoord="385"/>
+      <arcpath arcPointType="false" id="1" xCoord="610" yCoord="385"/>
+    </arc>
+    <arc id="cId155649510209446131380" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Catch2_3" target="FF2b_3" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="622" yCoord="79"/>
+      <arcpath arcPointType="false" id="1" xCoord="546" yCoord="370"/>
+    </arc>
+    <arc id="cId155649510209446131383" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Catch2_4" target="FF2b_4" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="1171" yCoord="462"/>
+      <arcpath arcPointType="false" id="1" xCoord="870" yCoord="385"/>
+    </arc>
+    <arc id="cId155649510209446131382" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Fork_3" target="FF2b_4" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="800" yCoord="385"/>
+      <arcpath arcPointType="false" id="1" xCoord="860" yCoord="385"/>
+    </arc>
+    <arc id="cId155649510209446131393" inscription="1" nameOffsetX="0" nameOffsetY="0" source="FF2a_2" target="Eat_2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="230" yCoord="230"/>
+      <arcpath arcPointType="false" id="1" xCoord="372" yCoord="298"/>
+    </arc>
+    <arc id="cId155649510209446131392" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Catch1_2" target="FF2a_2" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="225" yCoord="290"/>
+      <arcpath arcPointType="false" id="1" xCoord="225" yCoord="240"/>
+    </arc>
+    <arc id="cId155649510209446131395" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Catch1_3" target="FF2a_3" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="705" yCoord="290"/>
+      <arcpath arcPointType="false" id="1" xCoord="705" yCoord="240"/>
+    </arc>
+    <arc id="cId155649510209446131394" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Fork_3" target="FF2a_3" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="778" yCoord="372"/>
+      <arcpath arcPointType="false" id="1" xCoord="705" yCoord="240"/>
+    </arc>
+    <arc id="cId155649510209446131389" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Catch1_1" target="FF2a_1" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="545" yCoord="640"/>
+      <arcpath arcPointType="false" id="1" xCoord="546" yCoord="690"/>
+    </arc>
+    <arc id="cId155649510209446131391" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Fork_2" target="FF2a_2" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="531" yCoord="302"/>
+      <arcpath arcPointType="false" id="1" xCoord="230" yCoord="225"/>
+    </arc>
+    <arc id="cId1556495102094461313102" inscription="1" nameOffsetX="0" nameOffsetY="0" source="FF2a_5" target="Eat_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="545" yCoord="160"/>
+      <arcpath arcPointType="false" id="1" xCoord="468" yCoord="610"/>
+    </arc>
+    <arc id="cId1556495102094461313103" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Think_1" target="FF1b_1" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="560" yCoord="466"/>
+      <arcpath arcPointType="false" id="1" xCoord="620" yCoord="471"/>
+    </arc>
+    <arc id="cId1556495102094461313100" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Fork_5" target="FF2a_5" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="391" yCoord="531"/>
+      <arcpath arcPointType="false" id="1" xCoord="545" yCoord="160"/>
+    </arc>
+    <arc id="cId1556495102094461313101" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Catch1_5" target="FF2a_5" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="545" yCoord="210"/>
+      <arcpath arcPointType="false" id="1" xCoord="545" yCoord="160"/>
+    </arc>
+    <arc id="cId155649510209446131398" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Catch1_4" target="FF2a_4" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="865" yCoord="560"/>
+      <arcpath arcPointType="false" id="1" xCoord="866" yCoord="610"/>
+    </arc>
+    <arc id="cId155649510209446131399" inscription="1" nameOffsetX="0" nameOffsetY="0" source="FF2a_4" target="Eat_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="866" yCoord="610"/>
+      <arcpath arcPointType="false" id="1" xCoord="865" yCoord="480"/>
+    </arc>
+    <arc id="cId155649510209446131396" inscription="1" nameOffsetX="0" nameOffsetY="0" source="FF2a_3" target="Eat_3" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="705" yCoord="240"/>
+      <arcpath arcPointType="false" id="1" xCoord="632" yCoord="372"/>
+    </arc>
+    <arc id="cId155649510209446131397" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Fork_4" target="FF2a_4" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="1015" yCoord="475"/>
+      <arcpath arcPointType="false" id="1" xCoord="870" yCoord="625"/>
+    </arc>
+    <arc id="cId1556495102094461313110" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Fork_3" target="FF1b_3" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="777" yCoord="372"/>
+      <arcpath arcPointType="false" id="1" xCoord="630" yCoord="145"/>
+    </arc>
+    <arc id="cId1556495102094461313111" inscription="1" nameOffsetX="0" nameOffsetY="0" source="FF1b_3" target="Catch2_3" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="626" yCoord="130"/>
+      <arcpath arcPointType="false" id="1" xCoord="625" yCoord="80"/>
+    </arc>
+    <arc id="cId1556495102094461313108" inscription="1" nameOffsetX="0" nameOffsetY="0" source="FF1b_2" target="Catch2_2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="66" yCoord="370"/>
+      <arcpath arcPointType="false" id="1" xCoord="65" yCoord="320"/>
+    </arc>
+    <arc id="cId1556495102094461313109" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Think_3" target="FF1b_3" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="625" yCoord="210"/>
+      <arcpath arcPointType="false" id="1" xCoord="625" yCoord="160"/>
+    </arc>
+    <arc id="cId1554842614582809889106" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Think_2" target="FF1b_2" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="130" yCoord="386"/>
+      <arcpath arcPointType="false" id="1" xCoord="70" yCoord="390"/>
+    </arc>
+    <arc id="cId1554842614582809889107" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Fork_2" target="FF1b_2" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="530" yCoord="308"/>
+      <arcpath arcPointType="false" id="1" xCoord="70" yCoord="380"/>
+    </arc>
+    <arc id="cId1554842614582809889104" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Fork_1" target="FF1b_1" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="319" yCoord="388"/>
+      <arcpath arcPointType="false" id="1" xCoord="620" yCoord="461"/>
+    </arc>
+    <arc id="cId1554842614582809889105" inscription="1" nameOffsetX="0" nameOffsetY="0" source="FF1b_1" target="Catch2_1" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="630" yCoord="465"/>
+      <arcpath arcPointType="false" id="1" xCoord="690" yCoord="465"/>
+    </arc>
+    <arc id="cId1554842614582809889119" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Fork_5" target="FF1a_1" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="400" yCoord="545"/>
+      <arcpath arcPointType="false" id="1" xCoord="539" yCoord="555"/>
+    </arc>
+    <arc id="cId1554842614582809889118" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Think_1" target="FF1a_1" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="545" yCoord="480"/>
+      <arcpath arcPointType="false" id="1" xCoord="546" yCoord="530"/>
+    </arc>
+    <arc id="cId1554842614582809889117" inscription="1" nameOffsetX="0" nameOffsetY="0" source="FF1b_5" target="Catch2_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="390" yCoord="470"/>
+      <arcpath arcPointType="false" id="1" xCoord="450" yCoord="466"/>
+    </arc>
+    <arc id="cId1554842614582809889116" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Fork_5" target="FF1b_5" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="385" yCoord="530"/>
+      <arcpath arcPointType="false" id="1" xCoord="385" yCoord="480"/>
+    </arc>
+    <arc id="cId1554842614582809889115" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Think_5" target="FF1b_5" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="455" yCoord="396"/>
+      <arcpath arcPointType="false" id="1" xCoord="390" yCoord="465"/>
+    </arc>
+    <arc id="cId1554842614582809889114" inscription="1" nameOffsetX="0" nameOffsetY="0" source="FF1b_4" target="Catch2_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="1110" yCoord="465"/>
+      <arcpath arcPointType="false" id="1" xCoord="1170" yCoord="465"/>
+    </arc>
+    <arc id="cId1554842614582809889113" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Fork_4" target="FF1b_4" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="1040" yCoord="464"/>
+      <arcpath arcPointType="false" id="1" xCoord="1100" yCoord="461"/>
+    </arc>
+    <arc id="cId1554842614582809889112" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Think_4" target="FF1b_4" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="799" yCoord="542"/>
+      <arcpath arcPointType="false" id="1" xCoord="1100" yCoord="471"/>
+    </arc>
+    <arc id="cId1554842614582809889127" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Think_4" target="FF1a_4" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="785" yCoord="530"/>
+      <arcpath arcPointType="false" id="1" xCoord="785" yCoord="480"/>
+    </arc>
+    <arc id="cId1554842614582809889126" inscription="1" nameOffsetX="0" nameOffsetY="0" source="FF1a_3" target="Catch1_3" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="630" yCoord="305"/>
+      <arcpath arcPointType="false" id="1" xCoord="690" yCoord="305"/>
+    </arc>
+    <arc id="cId1554842614582809889125" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Fork_2" target="FF1a_3" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="560" yCoord="305"/>
+      <arcpath arcPointType="false" id="1" xCoord="620" yCoord="305"/>
+    </arc>
+    <arc id="cId1554842614582809889124" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Think_3" target="FF1a_3" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="625" yCoord="240"/>
+      <arcpath arcPointType="false" id="1" xCoord="626" yCoord="290"/>
+    </arc>
+    <arc id="cId1554842614582809889123" inscription="1" nameOffsetX="0" nameOffsetY="0" source="FF1a_2" target="Catch1_2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="226" yCoord="370"/>
+      <arcpath arcPointType="false" id="1" xCoord="225" yCoord="320"/>
+    </arc>
+    <arc id="cId1554842614582809889122" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Fork_1" target="FF1a_2" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="290" yCoord="385"/>
+      <arcpath arcPointType="false" id="1" xCoord="230" yCoord="385"/>
+    </arc>
+    <arc id="cId1554842614582809889121" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Think_2" target="FF1a_2" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="160" yCoord="385"/>
+      <arcpath arcPointType="false" id="1" xCoord="220" yCoord="385"/>
+    </arc>
+    <arc id="cId1554842614582809889120" inscription="1" nameOffsetX="0" nameOffsetY="0" source="FF1a_1" target="Catch1_1" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="545" yCoord="560"/>
+      <arcpath arcPointType="false" id="1" xCoord="545" yCoord="610"/>
+    </arc>
+    <arc id="cId1554842614582809889129" inscription="1" nameOffsetX="0" nameOffsetY="0" source="FF1a_4" target="Catch1_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="790" yCoord="465"/>
+      <arcpath arcPointType="false" id="1" xCoord="855" yCoord="534"/>
+    </arc>
+    <arc id="cId1554842614582809889128" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Fork_3" target="FF1a_4" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="785" yCoord="400"/>
+      <arcpath arcPointType="false" id="1" xCoord="786" yCoord="450"/>
+    </arc>
+    <arc id="cId1554842614582809889131" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Fork_4" target="FF1a_5" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="1012" yCoord="459"/>
+      <arcpath arcPointType="false" id="1" xCoord="470" yCoord="230"/>
+    </arc>
+    <arc id="cId1554842614582809889130" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Think_5" target="FF1a_5" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="465" yCoord="370"/>
+      <arcpath arcPointType="false" id="1" xCoord="465" yCoord="240"/>
+    </arc>
+    <arc id="cId1546580198499389249132" inscription="1" nameOffsetX="0" nameOffsetY="0" source="FF1a_5" target="Catch1_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="470" yCoord="220"/>
+      <arcpath arcPointType="false" id="1" xCoord="530" yCoord="224"/>
+    </arc>
+    <arc id="cId155649510209446131388" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Fork_1" target="FF2a_1" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="314" yCoord="397"/>
+      <arcpath arcPointType="false" id="1" xCoord="541" yCoord="697"/>
+    </arc>
+    <arc id="cId155319013566109305753" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Eat_1" target="End_1" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="240" yCoord="465"/>
+      <arcpath arcPointType="false" id="1" xCoord="300" yCoord="465"/>
+    </arc>
+    <arc id="cId155649510209446131390" inscription="1" nameOffsetX="0" nameOffsetY="0" source="FF2a_1" target="Eat_1" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="539" yCoord="715"/>
+      <arcpath arcPointType="false" id="1" xCoord="237" yCoord="475"/>
+    </arc>
+    <arc id="cId155153765244440892973" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Fork_5" target="FF2b_1" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="370" yCoord="545"/>
+      <arcpath arcPointType="false" id="1" xCoord="310" yCoord="542"/>
+    </arc>
+    <arc id="A80" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Fork_1" target="FF1a_1" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="317" yCoord="395"/>
+      <arcpath arcPointType="false" id="1" xCoord="540" yCoord="548"/>
+    </arc>
+  </net>
+  <k-bound bound="3"/>
+  <feature isGame="false" isTimed="false"/>
+</pnml>
