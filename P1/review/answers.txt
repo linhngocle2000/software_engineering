@@ -12,14 +12,11 @@ to produce a token for place "Eat_1". That is why it is a synchronization patter
 be unused and Philosopher 1 has to be in a state where he is able to pick up Fork 1 (i.e. in state "Catch1_1) as one of the conditions
 for Philosopher 1 to go to state "Eat"
 
-Fork 1 (i.e. in state "Catch1_1) as one of the conditions for Philosopher 1 to go to state "Eat"
-Pattern 2: {FF2a_1, FF2b_1} -> Eat_1 -> End_1 (meraina)
-- to produce a token for place "Eat_1", both transactions "FF2a_1" and "FF2a_1" need to be enabled
-- transaction "FF2a_1" when it consumes a token from place "Fork_1" and a token from place "Catch1_1"
-- transaction "FF2b_1" when it consumes a token from place "Fork_5" and a token from place "Catch2_1"
-- once "Eat_1" has a token, transaction "End_1" can be enabled
-- meaning: Philosopher 1 can only eat once he picked fork 1 from one side (== side a) and fork 5 from
-the other side (== side b). Philosopher 1 have to finish eating (end the "Eat" state) to be able to think again.
+Pattern 2: {FF2a_1, FF2b_1} -> Eat_1 -> End_1 (merging)
+To produce a token for place "Eat_1" either transaction "FF2a_1" or "FF2b_1" need to be enabled, and in case both transactions are enabled
+the tokens produced by "FF2a_1" and "FF2b_1" will be merged into one. In simple words no matter from which side Philosopher 1 picks his fork first
+he can still got state "Eat" because the only condition for the state "Eat" is that the Philosophers need two forks in their hands.
+
 Pattern 3: Fork_1 -> {FF2a_1, FF2b_2} (conflict)
 - place "Fork_1" can pass its token either to transition "FF2a_1" making it enabled and able to produce token for place "Eat_1"
 or to transition "FF2b_2" making it enabled and able to produce token for place "Eat_2"
