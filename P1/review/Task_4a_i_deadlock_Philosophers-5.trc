@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<trace>
+  <transition id="Philosophers_dash_PT_dash_000005_FF1a_1">
+    <token age="0" place="Philosophers_dash_PT_dash_000005_Fork_5"/>
+    <token age="0" place="Philosophers_dash_PT_dash_000005_Think_1"/>
+  </transition>
+  <transition id="Philosophers_dash_PT_dash_000005_FF1a_2">
+    <token age="0" place="Philosophers_dash_PT_dash_000005_Fork_1"/>
+    <token age="0" place="Philosophers_dash_PT_dash_000005_Think_2"/>
+  </transition>
+  <transition id="Philosophers_dash_PT_dash_000005_FF1a_3">
+    <token age="0" place="Philosophers_dash_PT_dash_000005_Fork_2"/>
+    <token age="0" place="Philosophers_dash_PT_dash_000005_Think_3"/>
+  </transition>
+  <transition id="Philosophers_dash_PT_dash_000005_FF1a_4">
+    <token age="0" place="Philosophers_dash_PT_dash_000005_Think_4"/>
+    <token age="0" place="Philosophers_dash_PT_dash_000005_Fork_3"/>
+  </transition>
+  <transition id="Philosophers_dash_PT_dash_000005_FF1a_5">
+    <token age="0" place="Philosophers_dash_PT_dash_000005_Fork_4"/>
+    <token age="0" place="Philosophers_dash_PT_dash_000005_Think_5"/>
+  </transition>
+</trace>
