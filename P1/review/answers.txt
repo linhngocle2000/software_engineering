@@ -5,31 +5,34 @@ i.e. two programs access the same resource at the same time, and the model shows
 inappropriate use of those shared resources can lead to deadlocks.
 There are 11 instances of this model, and we chose the instance of N=5, where N is the number of dining philosophers.
 
+
+
 Task 2
 Pattern 1: {Catch1_1,Fork_1} -> FF2a_1 -> Eat_1 (synchronization)
-Transition "FF2a_1" has to consume tokens from the places "Fork_1" and "Catch1_1" at the same time to be enabled and be able
-to produce a token for place "Eat_1". That is why it is a synchronization pattern. This can be interpreted that Fork 1 has to
-be unused and Philosopher 1 has to be in a state where he is able to pick up Fork 1 (i.e. in state "Catch1_1) as one of the conditions
-for Philosopher 1 to go to state "Eat"
+Transition "FF2a_1" has to consume tokens from the places "Fork_1" and "Catch1_1" at the same time to be enabled
+and be able to produce a token for place "Eat_1". That is why it is a synchronization pattern. This can be
+interpreted that Fork 1 has to be unused and Philosopher 1 has to be in a state where he is able to pick up Fork 1
+(i.e. in state "Catch1_1) as one of the conditions for Philosopher 1 to go to state "Eat".
 
 Pattern 2: {FF2a_1, FF2b_1} -> Eat_1 -> End_1 (merging)
-To produce a token for place "Eat_1" either transaction "FF2a_1" or "FF2b_1" need to be enabled, and in case both transactions are enabled
-the tokens produced by "FF2a_1" and "FF2b_1" will be merged into one. In simple words no matter from which side Philosopher 1 picks his fork first
-he can still got state "Eat" because the only condition for the state "Eat" is that the Philosophers need two forks in their hands.
+To produce a token for place "Eat_1", either transaction "FF2a_1" or "FF2b_1" need to be enabled, and in case both transactions are enabled (which is impossible for this model) the tokens produced by "FF2a_1" and "FF2b_1" will be
+merged into one. In simple words, no matter from which side Philosopher 1 picks his fork first he can still get to
+state "Eat" because the only condition for the state "Eat" is that the Philosophers need two forks in their hands.
 
 Pattern 3: Fork_1 -> {FF2a_1, FF2b_2} (conflict)
-Place "Fork_1" can pass its token to transition "FF2a_1" or to transition "FF2b_2". This is a conflict, since "Fork_1" has only
-one token but there are two transitions it can pass its token to, meaning only one transition gets to consume the token from "Fork_1".
-In other words, depending on how "Fork_1" will pass its token, either Philosopher 1 or Philosopher 2 cannot eat, because one is missing one fork,
-namely "Fork_1".
+Place "Fork_1" can pass its token to transition "FF2a_1" or to transition "FF2b_2". This is a conflict, since
+"Fork_1" has only one token but there are two transitions it can pass its token to, meaning only one transition gets
+to consume the token from "Fork_1". In other words, depending on how "Fork_1" will pass its token, either Philosopher 1
+or Philosopher 2 cannot eat, because one is missing one fork, namely "Fork_1".
+
+
 
 Task 3
-As an example, we select Fork_1.
-The maximum number of token in Fork_1 is 1.
-The place represents the state of fork No.1 being in use.
-If Fork_1 contains a token, that means that fork No.1 is unused.
-Otherwise, if there is no token, fork No.1 is used by either philosophers 1 or 2.
-Since fork No.1 can either be used or unused, as represented by the token, the place only needs a maximum of one tokens.
+As an example, we select Fork_1. The maximum number of token in Fork_1 is 1.
+The place "Fork_1" represents the state of fork No.1 being in use. If "Fork_1" contains a token, that means that
+fork No.1 is unused. Otherwise, if there is no token, fork No.1 is used by either Philosopher 1 or Philosopher 2.
+Since fork No.1 can either be used or unused, corresponding to having a token or having no token, the place "Fork_1"
+only needs a maximum of one token.
 
 
 
@@ -37,20 +40,19 @@ Task 4
 a)
 i) deadlock
 There is a deadlock in the system.
-To create a deadlock, we can fire the transitions “FF1a_1”, “FF1a_2”, “FF1a_3”, “FF1a_4” and “FF1a_5” in succession.
-Now, all philosophers picked up the fork on their left side, so each philosopher only has one fork.
-With that they are not able to eat because all the forks are taken,
-and a philosopher can only go back to thinking after eating, so no transition can fire from this marking.
+To create a deadlock, starting from "Initial Marking", we can fire the transitions “FF1a_1”, “FF1a_2”, “FF1a_3”,
+“FF1a_4” and “FF1a_5” in succession.
+Now, all Philosophers picked up the fork on their side a, so each Philosopher only has one fork. However they are not
+able to eat because all the forks are taken, but each Philosopher need to forks to eat. The Philosophers cannot go back
+to thinking, because they can only go to thinking when they have eaten. At this point, all Philosophers cannot do anything, meaning no transition can be fired from this marking.
 
 ii) dead transition(s)
-Modification:
-- Add an arc from place "Fork_1" to transition "FF1a_1"
-Dead transition: FF2a_1
+The model has no dead transition. To create a dead transitions, we can modify the model, by adding an arc from place "Fork_1" to transition "FF1a_1". We will obtain the dead transition "FF2a_1".
+Explanation of the solution:
+Assume the token of "Fork_1" is passed to "Catch1_1" through "FF1a_1", i.e. Philosopher 1 is given the fork No.1 accidentally when he is picking up the fork No.5 on his side a. Initially fork No.1 is given to Philosopher 1 (when it is unused) only after Philopher 1 has picked up fork 5, meaning transition "FF2a_1" consumes a token from both "Fork_1" and "Catch1_1" to produce a token for "Eat_1", but since the token of "Fork_1" will always be consumed by "FF1a_1" beforehand, "FF2a_1" will only receive one token from "Catch1_1", and therfore "FF2a_1" will never become enabled. In other words, if Philosopher 1 pick fork No.5 on side a first, he can never eat.
 
-b)
-liveness:  for every transition t, from every reachable marking, one can reach a marking in which t can fire.
-
-As described in 4a.i, there is a reachable marking that is a deadlock, i.e. no transition can fire from that position / marking.
-Therefore, the liveness porperty does not hold, since no transition can fire, and we cannot reach any transition whatsoever.
+b) live
+The property does not hold.
+As described in Task 4a.i, there exists at least one transition where its marking graph has a deadlock, e.g. transition "FF1a_5". Once we fire the transitions as in the sequence stated in Task 4a.i, we will reach the transition "FF1a_5", where no transitions are enabled after that. Since no transition can fire, and we cannot reach any marking.
 
 
