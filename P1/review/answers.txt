@@ -46,7 +46,7 @@ To create a deadlock, starting from "Initial Marking", we can fire the transitio
 Now, all Philosophers picked up the fork on their side a, so each Philosopher only has one fork. However they are not
 able to eat because all the forks are taken, but each Philosopher need to forks to eat. The Philosophers cannot go back
 to thinking, because they can only go to thinking when they have eaten. At this point, all Philosophers cannot do anything,
-meaning no transition can be fired from this marking.
+meaning no transition can be fired from this marking and the net is "deadlocked".
 
 ii) dead transition(s)
 The model has no dead transition. To create a dead transitions, we can modify the model, by adding an arc from place "Fork_1"
