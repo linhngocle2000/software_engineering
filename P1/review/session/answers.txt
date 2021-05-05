@@ -1,0 +1,24 @@
+Model: Referendum
+Author: Fabrice Kordon
+Year: 2017
+
+Task 1:
+We have chosen the model because it was one of the more comprehensible models available.
+
+Task 2:
+From ready, to start and then voting, the model uses a sequence to transport the token. After voting a  conflict is present where depending on the variable v in Voter, where Voters is 1..15, the token transmits to the transition no or yes, where another sequence transports the token to their corresponding "voted"-place. 
+
+Task 3:
+In our chosen model, the only place with non-empty tokens is ready. This is because each voter only has one vote and the model is present to guide that token to their chosen vote.
+
+Task 4:
+a)
+i) Deadlock:
+As stated in the document, the model has a deadlock, since the tokens accumulate in "vote_yes" or "vote_no" and don't have a way to be reused.
+
+ii) Dead transitions:
+For a dead transition, one would simply need to add a transition before ready, to which no token could transmit. This would constitute a dead transition.
+
+b)
+i) Live:
+Since the net has transitions, but also has a previously explained deadlock, it is not live.
