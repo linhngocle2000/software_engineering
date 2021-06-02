@@ -1,0 +1,119 @@
+model ElevatorModel
+
+-- classes
+
+class Controller
+attributes
+  deltaT : Real
+  deltaZ : Real
+operations
+  control()
+end
+
+abstract class Location
+end
+
+class Floor < Location
+attributes
+  z : Real
+  height : Real
+operations
+  abovePlus() : Set(Floor) =
+    abovePlusAux(Set{above})->reject(isUndefined)
+
+  belowPlus() : Set(Floor) = 
+    belowPlusAux(Set{below})->reject(isUndefined)
+
+  abovePlusAux(s:Set(Floor)) : Set(Floor) = 
+    if s->collect(floor|floor.above)->exists(floor|s->excludes(floor))
+    then abovePlusAux(s->union(s->collect(floor|floor.above))->asSet)
+    else s
+    endif
+
+  belowPlusAux(s:Set(Floor)) : Set(Floor) =
+    if s->collect(floor|floor.below)->exists(floor|s->excludes(floor))
+    then belowPlusAux(s->union(s->collect(floor|floor.below))->asSet)
+    else s
+    endif
+end
+
+class Elevator < Location
+attributes
+  z : Real
+  v : Real
+  maxLoad : Real
+  beeping : Boolean
+  direction : Direction
+  brake : Boolean
+end
+
+enum Direction {idle, up, down}
+
+class Person
+attributes
+  weight : Real
+end
+
+enum DoorsState {closed, open, closing, opening}
+enum DoorsCommand {close, open}
+
+-- associations
+
+association FloorOrder between
+  Floor[0..1] role below
+  Floor[0..1] role above
+end
+
+associationclass Doors
+between
+  Floor[1..*] role floor
+  Elevator[1..*] role elevator
+attributes
+  state : DoorsState
+  command : DoorsCommand
+end
+
+associationclass FloorButton
+between
+  Elevator[1..*] role inElevator
+  Floor[1..*] role destFloor
+attributes
+  pressed : Boolean
+end
+
+associationclass UpButton
+between
+  Floor[1..*] role upOnFloor
+  Elevator[*] role upToElevator
+attributes
+  pressed : Boolean
+end
+
+associationclass DownButton
+between
+  Floor[1..*] role downOnFloor
+  Elevator[*] role downToElevator
+attributes
+  pressed : Boolean
+end
+
+aggregation CurrentLocation
+between
+  Location[1] role location
+  Person[*] role person
+end
+
+-- constraints
+
+constraints
+
+-- put your constraints here
+
+-- Invariant 1
+-- Floors must be fitted without gaps, i.e., the coordinate z of the floor above
+-- must be equal to the coordinate z of the floor below plus its height.
+
+context Floor
+inv: self.above.z = self.below.z + self.below.height
+
+-- end model
