@@ -1,0 +1,17 @@
+Task 3
+
+For the formalization of the constraint "Elevator must be beeping iff the weight of the passengers
+inside the Elevator is greater than its maxLoad.", the entities Person and Elevator are needed.
+The entity Person is needed, because it represents a passenger and has weight as its attribute,
+which is required for the calculation of the total weight of passengers inside the Elevator. The 
+entity Elevator is needed, because it has the attributes maxLoad, which will be compared with the
+total weight, and beeping, which will be set to true when totalWeight > maxLoad, like stated in the
+constraint.
+
+Task 4
+
+In the constraint "Elevator must be beeping iff the weight of the passengers inside the Elevator
+is greater than its maxLoad.", the OCL constructs "pre" and "post" can be used, meaning we can
+state pre- and postcondition. In the precondition we compare the weight of passengers in the Elevator
+with maxLoad and in the postcondition we set beeping to true. So if precondition holds, meaning 
+maxLoad is exceeded, postcondition will be executed, meaning the Elevator will be beeping.
