@@ -1,3 +1,10 @@
+Task 1
+
+One UML feature that can be found in the model is the Abstract Class "Location" which does not
+have a complete declaration. The class "Location" is used by other classifiers as a target of 
+generalization by class "Elevator" and class "Floor", as well as a target of aggregation by the 
+class "Person".  
+
 Task 2
 
 We choose the contraint "Floors must form a single chain."
