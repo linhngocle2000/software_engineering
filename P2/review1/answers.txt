@@ -1,3 +1,16 @@
+Task 2
+
+We choose the contraint "Floors must form a single chain."
+The multiplicities of the FloorOrder relationship are above 0..1 and below 0..1.
+
+Imagine the multiplicity of `above` would be changed to 0..2 which would mean each floor could have up to 2 floors above it which could lead to a layout like:
+
+3A  3B  3C  3D
+  2A      2B
+       1
+
+This floor layout, while unrealistic, would not have a single chain, but rather four chains to connect all the floors.
+
 Task 3
 
 For the formalization of the constraint "Elevator must be beeping iff the weight of the passengers
