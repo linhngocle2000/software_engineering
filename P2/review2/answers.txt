@@ -1,4 +1,3 @@
-
 Task 1
 
 c)
@@ -10,6 +9,11 @@ c)
    a conventional programming language
 
 d)
+(SOIL is a great language that enables the reuse of existing tools and libraries, of knowledge that developer already gained for OCL,
+and of formal methodsfor OCL expressions.)
+The drawback of SOIL is the amalgamation of expressions and statements with regard to monolithic languages such as ImperativeOCL, where constructs have to decomposed in SOIL resulting in larger programs. Solution -> ?
+
+
 
 
 Task 2
