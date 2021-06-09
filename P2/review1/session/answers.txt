@@ -1,0 +1,21 @@
+Project 2, Review 1
+
+1.
+Floor is an object of the UML. Objects help to modularise larger systems into smaller and easier to comprehend components and is the fundamental building block of a system.
+
+2.
+Multiplicity: Elevator.maxLoad
+Constraint: Elevator must be beeping iff the weight of the passengers inside the Elevator is greater than its maxLoad.
+
+Changing maxLoad would change the carrying capacity of the Elevator. A larger maxLoad would mean, more weight could be added to the cabin before the Elevator starts beeping, which in turn means more weight can be added before the doors may open.
+
+3.
+Constraint: Elevator must be beeping iff the weight of the passengers inside the Elevator is greater than its maxLoad.
+
+First, one would need to formalise the maxLoad of the elevator. Second the passengers, as they are the origin of the added weight maxLoad checks against. And lastly beeping, as that is the consequence of the case that the weight of the passengers exceeds the maxLoad.
+
+4.
+Construct: sum
+Constraint: Elevator must be beeping iff the weight of the passengers inside the Elevator is greater than its maxLoad.
+
+Using sum, one can sum up Person.weight of all Person in the Elevator. The result can than be compared to Elevator.maxLoad and if the Elevator has to start beeping.
