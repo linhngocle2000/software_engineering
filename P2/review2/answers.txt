@@ -26,22 +26,19 @@ Task 2
 -- Specification: Write an operation that counts the number of employees
 -- in a Department
 -- Solution:
-numberOfEmployees() : Integer = self.employee->size()
+numberOfEmployees() : Integer = -- todo
 
 2) 
 -- Specification: Write an operation that remove an employee from a Department
 -- and also from all Projects of that Department
 -- Solution:
 leave(e:Employee) begin
-    delete(e,self) from WorksIn;
-    for p in e.project do
-      delete (e,p) from WorksOn;
-    end   
+    -- todo  
 end
 
 3) 
 -- Specification: Write an operation that add an Employee to a Project
 -- Solution:
 addMembers(p:Project,e:Employee) begin
-    insert(e,p) into WorksOn;
+    -- todo
 end
