@@ -2,6 +2,9 @@ Task 1
 a)
 With SOIL, the syntax and semantics of OCL remains unchanged by the imperative language.
 
+b)
+It is motivated by the need to have a simple, imperative model animation language for the UML-based Specification Environment(USE), an interpreter and validator for OCL and UML.
+
 c)
 -  adds well-known, traditional imperative constructs
 -  Using SOIL, imperative definitions can be given for the operations of a model, and the imperative definitions can be validated against the
