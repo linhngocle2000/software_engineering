@@ -10,6 +10,20 @@ operations
   control()
 end
 
+-- for up in UpButton.allInstances() do
+--       if up.pressed = true then
+--       up.upToElevator.direction := #down;
+--         if ((up.upToElevator.z-up.upOnFloor.z).abs()<=self.deltaZ) then
+--         up.upToElevator.brake:=true;
+--       for d in Doors.allInstances() do
+--         if d.elevator.brake = true then
+--         d.command := #open
+--         end
+--         end
+--       end
+--       end
+--     end
+
 abstract class Location
 end
 
@@ -114,6 +128,56 @@ constraints
 -- must be equal to the coordinate z of the floor below plus its height.
 
 context Floor
-inv: self.above.z = self.below.z + self.below.height
+inv: (self.below->notEmpty()) implies self.z = self.below.z + self.below.height 
+      and (self.above->notEmpty()) implies self.above.z = self.z+self.height
 
+-- Invariant 2
+-- FloorOrder, when transitively closed, must form a strict order,
+-- i.e. be irreflexive and asymmetric.
+
+context Floor
+inv: self.above <> self and self.below <> self and self.above <> self.below
+
+-- Invariant 3
+-- Floors must form a single chain.
+
+context Floor
+inv: if (self.below->notEmpty()) then self.below->size()=1 and self.below.above = self else self.below->size()=0 endif 
+     and if (self.above->notEmpty()) then self.above->size()=1 and self.above.below= self else self.above->size()=0 endif
+     and if (self.below->notEmpty() and self.above->notEmpty()) then self.below = self.above.below.below 
+     and self.above = self.below.above.above 
+     else self.below->size()=0 or self.above->size()=0 endif
+
+context Elevator 
+inv: self.floor.above->count(null) = 1 and self.floor.below->count(null) = 1 
+
+-- Invariant 4
+-- Doors can open only if the Elevator is in the deltaZ-neighborhood of some Floor,
+-- the brake is set, and the Elevator is not beeping.
+
+context Doors
+inv: let deltaZ:Real =  Controller.allInstances()->asSequence()->first().deltaZ in
+(self.state=DoorsState::open) implies
+(Floor.allInstances()->exists(f:Floor|(self.elevator.z-f.z).abs()<=deltaZ) and
+self.elevator.brake=true and self.elevator.beeping=false) 
+
+-- Invariant 5
+-- Elevator must be beeping iff the weight of the passengers inside
+-- the Elevator is greater than its maxLoad.
+
+context Elevator
+inv: if (self.person.weight->sum() > self.maxLoad) then (self.beeping = true)
+else (self.beeping = false) endif
+
+-- Invariant 6
+-- Elevator’s coordinate z must be either between Floors or in their deltaZ-neighborhoods.
+context Elevator
+
+inv: let deltaZ:Real =  Controller.allInstances()->asSequence()->first().deltaZ in
+if (self.floor->asSequence()->first().abovePlus()->notEmpty())
+then not self.floor->asSequence()->first().abovePlus()->forAll(f:Floor|self.z>f.z+deltaZ)
+else self.z<=self.floor->asSequence()->first().z+deltaZ endif
+and if (self.floor->asSequence()->first().belowPlus()->notEmpty())
+then not self.floor->asSequence()->first().belowPlus()->forAll(f:Floor|self.z<f.z-deltaZ)
+else self.z>=self.floor->asSequence()->first().z-deltaZ endif
 -- end model
