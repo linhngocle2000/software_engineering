@@ -18,7 +18,7 @@ d)
 of knowledge that developer already gained for OCL,and of formal methodsfor OCL expressions.)
 
 The drawback of SOIL is the amalgamation of expressions and statements with regard to monolithic languages,
-such as ImperativeOCL, where constructs have to decomposed in SOIL, resulting in larger programs.
+such as ImperativeOCL, where constructs have to be decomposed in SOIL, resulting in larger programs.
 Since we already have the full power of OCL expressions as part of the imperative language, and therefore a lot of 
 programming can be done in a functional manner, such amalgamations should be avoided completely for having a
 language that reuses OCL in a modular and comprehensive way.  
