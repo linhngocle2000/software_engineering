@@ -1,0 +1,33 @@
+Task 1.
+a)
+
+The main difference between OCL and SOIL is that SOIL has an imperative way to specify behavior.
+
+b)
+
+With an language like SOIL, Imperative control structures ( like loops and conditional execution) can be used.
+
+c)
+
+-if statements (conditional expression)
+-while (loop)
+-for (loop)
+-Write(s:String) (basic I/O operations)
+-recursion
+
+d)
+
+It's a language meant for objects and their relations to each other and therefore is a tool fitted for the job and not meant for a broader application (no higher order functions...)
+Yet for the analysis of obejct oriented programs it is definitly well suited.
+
+Task 2.
+
+first kata:
+Define an operation for Department, in which an Employee with a chosen name gets hired
+
+second kata:
+Define an operation where a project with a name, a budget and a fitting worker gets created
+
+third kata:
+Define an operation for Department, in which an Employee gets fired ( if the Employee works on a project, he need also needs
+to be suspended from it)
