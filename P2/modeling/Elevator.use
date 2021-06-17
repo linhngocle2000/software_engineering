@@ -7,22 +7,67 @@ attributes
   deltaT : Real
   deltaZ : Real
 operations
-  control()
+  control() begin
+    for e in Elevator.allInstances() do
+      declare floors : Sequence(Floor),
+              atFloor : Floor;
+      floors := (e.floorButton->select(fb|fb.pressed).destFloor->
+      union(e.downButton->select(db|db.pressed).downOnFloor)->
+      union(e.upButton->select(ub|ub.pressed).upOnFloor))->asSequence;
+      atFloor := floors->select(fl|(e.z-fl.z).abs<=self.deltaZ)->at(1);
+      if e.person.weight->sum > e.maxLoad then
+        e.beeping := true;
+      else e.beeping:=false
+      end;
+      if atFloor<>null or e.doors->exists(d|d.state=#closing) then
+        for door in e.doors do
+          if atFloor=door.floor and not e.doors->exists(d|d.state=#closing) then
+            if e.beeping=false and (door.state=DoorsState::closed or door.state=#opening) then
+              e.brake:=true;
+              door.command:=#open
+            end            
+          end;
+          if e.beeping=false and door.state=#closing then
+            door.command:=#close;
+            e.direction:=#idle
+          end;
+          if e.beeping=false and door.state=DoorsState::open and atFloor=door.floor then
+            door.command:=#close;
+            for ub in atFloor.upButton->select(ub|(e.z-ub.upOnFloor.z).abs<=self.deltaZ) do
+              ub.pressed:=false
+            end;
+            for db in atFloor.downButton->select(db|(e.z-db.downOnFloor.z).abs<=self.deltaZ) do
+              db.pressed:=false
+            end;
+            for fb in atFloor.floorButton->select(fb|(e.z-fb.destFloor.z).abs<=self.deltaZ) do
+              fb.pressed:=false
+            end
+          end            
+        end
+      end;
+      if e.direction<>#idle and atFloor=null and
+      e.doors->forAll(d|d.state=DoorsState::closed) then
+        e.direction:=e.direction
+      end;
+      if e.direction=#idle and e.z<floors->first.z and
+      atFloor=null and e.doors->forAll(d|d.state=DoorsState::closed) then
+        e.brake:=false;
+        e.direction:=#up
+      end;
+      if e.direction=#idle and e.z>floors->first.z and
+      atFloor=null and e.doors->forAll(d|d.state=DoorsState::closed) then
+        e.brake:=false;
+        e.direction:=#down
+      end;
+      if (floors->isEmpty) and
+      e.doors->forAll(door|door.state=#closed) then
+        e.direction:=#idle
+      end
+    end      
+  end
 end
 
--- for up in UpButton.allInstances() do
---       if up.pressed = true then
---       up.upToElevator.direction := #down;
---         if ((up.upToElevator.z-up.upOnFloor.z).abs()<=self.deltaZ) then
---         up.upToElevator.brake:=true;
---       for d in Doors.allInstances() do
---         if d.elevator.brake = true then
---         d.command := #open
---         end
---         end
---       end
---       end
---     end
+-- liste von 
 
 abstract class Location
 end
@@ -141,15 +186,15 @@ inv: self.above <> self and self.below <> self and self.above <> self.below
 -- Invariant 3
 -- Floors must form a single chain.
 
-context Floor
-inv: if (self.below->notEmpty()) then self.below->size()=1 and self.below.above = self else self.below->size()=0 endif 
-     and if (self.above->notEmpty()) then self.above->size()=1 and self.above.below= self else self.above->size()=0 endif
-     and if (self.below->notEmpty() and self.above->notEmpty()) then self.below = self.above.below.below 
-     and self.above = self.below.above.above 
-     else self.below->size()=0 or self.above->size()=0 endif
+-- context Floor
+-- inv: if (self.below->notEmpty()) then self.below->size()=1 and self.below.above = self else self.below->size()=0 endif 
+--      and if (self.above->notEmpty()) then self.above->size()=1 and self.above.below= self else self.above->size()=0 endif
+--      and if (self.below->notEmpty() and self.above->notEmpty()) then self.below = self.above.below.below 
+--      and self.above = self.below.above.above 
+--      else self.below->size()=0 or self.above->size()=0 endif
 
-context Elevator 
-inv: self.floor.above->count(null) = 1 and self.floor.below->count(null) = 1 
+context Floor
+inv: Floor.allInstances()->one(f|f.above->size()=0) and Floor.allInstances()->one(f|f.below->size()=0)
 
 -- Invariant 4
 -- Doors can open only if the Elevator is in the deltaZ-neighborhood of some Floor,
@@ -157,8 +202,8 @@ inv: self.floor.above->count(null) = 1 and self.floor.below->count(null) = 1
 
 context Doors
 inv: let deltaZ:Real =  Controller.allInstances()->asSequence()->first().deltaZ in
-(self.state=DoorsState::open) implies
-(Floor.allInstances()->exists(f:Floor|(self.elevator.z-f.z).abs()<=deltaZ) and
+(self.state=DoorsState::open or self.state=DoorsState::opening or self.state=DoorsState::closing) implies
+((self.elevator.z-self.floor.z).abs()<=deltaZ and
 self.elevator.brake=true and self.elevator.beeping=false) 
 
 -- Invariant 5
