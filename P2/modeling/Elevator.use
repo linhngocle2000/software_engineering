@@ -194,6 +194,7 @@ constraints
 context Floor
 inv: (self.below->notEmpty()) implies self.z = self.below.z + self.below.height 
       and (self.above->notEmpty()) implies self.above.z = self.z+self.height
+
 --  if a floor exists below/above current floor, it's current z equals below.z + below.height 
 --  and the z coordinate from the floor above equals current floor z+height
 
@@ -210,15 +211,9 @@ inv: self.above <> self and self.below <> self and self.above <> self.below
 -- Invariant 3
 -- Floors must form a single chain.
 
--- context Floor
--- inv: if (self.below->notEmpty()) then self.below->size()=1 and self.below.above = self else self.below->size()=0 endif 
---      and if (self.above->notEmpty()) then self.above->size()=1 and self.above.below= self else self.above->size()=0 endif
---      and if (self.below->notEmpty() and self.above->notEmpty()) then self.below = self.above.below.below 
---      and self.above = self.below.above.above 
---      else self.below->size()=0 or self.above->size()=0 endif
-
 context Floor
 inv: Floor.allInstances()->one(f|f.above->size()=0) and Floor.allInstances()->one(f|f.below->size()=0)
+
 -- there is only one floor that has no floor above and only one floor that has no floor below
 
 
@@ -233,6 +228,7 @@ inv: let deltaZ:Real =  Controller.allInstances()->asSequence()->first().deltaZ 
 self.elevator.brake=true)) and
 ((self.state=DoorsState::closing) implies
 self.elevator.beeping=false)
+
 -- take the first deltaZ from the sequence of the controllers. DoorState open or closing imply that the distance is <= deltaZ and the brake is set
 -- in addition DoorState closing implies that the elevator is not beeping
 
@@ -244,6 +240,7 @@ self.elevator.beeping=false)
 context Elevator
 inv: if (self.person.weight->sum() > self.maxLoad) then (self.beeping = true)
 else (self.beeping = false) endif
+
 -- check iff the sum of the passengers weight inside the elevator is greater than maxLoad
 -- if yes the elevator is beeping, else not
 
