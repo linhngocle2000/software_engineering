@@ -205,6 +205,7 @@ inv: (self.below->notEmpty()) implies self.z = self.below.z + self.below.height
 
 context Floor
 inv: self.above <> self and self.below <> self and self.above <> self.below
+
 -- current Floor, above and below current floor have to unequal to each other
 
 
@@ -229,7 +230,8 @@ self.elevator.brake=true)) and
 ((self.state=DoorsState::closing) implies
 self.elevator.beeping=false)
 
--- take the first deltaZ from the sequence of the controllers. DoorState open or closing imply that the distance is <= deltaZ and the brake is set
+-- take the first deltaZ from the sequence of the controllers. DoorState open or closing
+-- imply that the distance is <= deltaZ and the brake is set
 -- in addition DoorState closing implies that the elevator is not beeping
 
 
@@ -247,8 +249,8 @@ else (self.beeping = false) endif
 
 -- Invariant 6
 -- Elevator’s coordinate z must be either between Floors or in their deltaZ-neighborhoods.
-context Elevator
 
+context Elevator
 inv: let deltaZ:Real =  Controller.allInstances()->asSequence()->first().deltaZ in
 if (self.floor->asSequence()->first().abovePlus()->notEmpty())
 then not self.floor->asSequence()->first().abovePlus()->forAll(f:Floor|self.z>f.z+deltaZ)
@@ -256,4 +258,5 @@ else self.z<=self.floor->asSequence()->first().z+deltaZ endif
 and if (self.floor->asSequence()->first().belowPlus()->notEmpty())
 then not self.floor->asSequence()->first().belowPlus()->forAll(f:Floor|self.z<f.z-deltaZ)
 else self.z>=self.floor->asSequence()->first().z-deltaZ endif
+
 -- end model
