@@ -191,36 +191,43 @@ constraints
 -- Floors must be fitted without gaps, i.e., the coordinate z of the floor above
 -- must be equal to the coordinate z of the floor below plus its height.
 
+-- Explanation: a floor's coordinate equals to the coordinate of the floor
+-- below it and its coordinate
+
 context Floor
 inv: (self.below->notEmpty()) implies self.z = self.below.z + self.below.height 
       and (self.above->notEmpty()) implies self.above.z = self.z+self.height
-
---  if a floor exists below/above current floor, it's current z equals below.z + below.height 
---  and the z coordinate from the floor above equals current floor z+height
 
 
 -- Invariant 2
 -- FloorOrder, when transitively closed, must form a strict order,
 -- i.e. be irreflexive and asymmetric.
 
+-- Explanation: a floor can't be above AND below another floor and all floor
+-- objects have to be unique
+
 context Floor
 inv: self.above <> self and self.below <> self and self.above <> self.below
-
--- current Floor, above and below current floor have to unequal to each other
 
 
 -- Invariant 3
 -- Floors must form a single chain.
 
+-- Explanation: in a floor chain, there can only be one floor that has no floor above it
+-- and one floor that has no floor below it
+
 context Floor
 inv: Floor.allInstances()->one(f|f.above->size()=0) and Floor.allInstances()->one(f|f.below->size()=0)
-
--- there is only one floor that has no floor above and only one floor that has no floor below
-
 
 -- Invariant 4
 -- Doors can open only if the Elevator is in the deltaZ-neighborhood of some Floor,
 -- the brake is set, and the Elevator is not beeping.
+
+-- Explanation: if the doors are open then the elevator's coordinate has to 
+-- equal the coordinate of a floor (or with very small height differences=deltaZ);
+-- if the elevator is beeping, door is not allowed to close
+-- since the controller has only one instance, it doesn't matter from which
+-- object we obtain deltaZ value from
 
 context Doors
 inv: let deltaZ:Real =  Controller.allInstances()->asSequence()->first().deltaZ in
@@ -230,25 +237,24 @@ self.elevator.brake=true)) and
 ((self.state=DoorsState::closing) implies
 self.elevator.beeping=false)
 
--- take the first deltaZ from the sequence of the controllers. DoorState open or closing
--- imply that the distance is <= deltaZ and the brake is set
--- in addition DoorState closing implies that the elevator is not beeping
-
-
 -- Invariant 5
 -- Elevator must be beeping iff the weight of the passengers inside
 -- the Elevator is greater than its maxLoad.
+
+-- self-explanatory
 
 context Elevator
 inv: if (self.person.weight->sum() > self.maxLoad) then (self.beeping = true)
 else (self.beeping = false) endif
 
--- check iff the sum of the passengers weight inside the elevator is greater than maxLoad
--- if yes the elevator is beeping, else not
-
 
 -- Invariant 6
 -- Elevator’s coordinate z must be either between Floors or in their deltaZ-neighborhoods.
+
+-- Explanation: take a random floor from the floor chain, if there exists some floors
+-- above(below) it then the elevator's coordinate cannot be bigger(smaller) than all Floor,
+-- if such floors doesn't exist, meaning the random floor is the top(bottom) floor and
+-- the elevator cannot be higher(lower) than this floor; 
 
 context Elevator
 inv: let deltaZ:Real =  Controller.allInstances()->asSequence()->first().deltaZ in
