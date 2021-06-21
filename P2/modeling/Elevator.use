@@ -20,10 +20,6 @@ operations
       atFloor := floors->select(fl|(e.z-fl.z).abs<=self.deltaZ)->at(1);
       -- Check whether the weight of the passengers inside the Elevator is greater than its maxLoad.
       -- if the weight is unsuitable for maxLoad, Elevator must be beeping.
-      -- if e.person.weight->sum > e.maxLoad then
-      --   e.beeping := true;
-      -- else e.beeping:=false
-      -- end;
       e.beeping := e.person.weight->sum > e.maxLoad;
       -- if elevator is in deltaZ-neighboorhood of a floor OR at least one door is not closed,,,
       if atFloor<>null or not (e.doors->forAll(d|d.state=DoorsState::closed)) then
@@ -33,7 +29,7 @@ operations
             -- If we are moving up and the upButton of the current floor is pressed
             --   OR if we are moving down and the downButton of the current floor is pressed
             --   OR if the current floor is the next stop anyway
-            -- => Break and open the doors
+            -- => Brake and open the doors
             if ((e.direction=#up or e.direction=#idle) and atFloor.upButton->asSequence->at(1).pressed=true) or
             ((e.direction=#down or e.direction=#idle) and atFloor.downButton->asSequence->at(1).pressed=true) or
             (atFloor.floorButton->asSequence->at(1).pressed=true) then
@@ -41,7 +37,7 @@ operations
               door.command:=DoorsCommand::open
             end;
             -- If we are moving down and current floor is the last floor at the bottom
-            -- => Break and open the doors (ex: somebody on lowest floor pressed up)
+            -- => Brake and open the doors (ex: somebody on lowest floor pressed up)
             if (e.direction=#down and (not (floors->exists(fl|fl.z<atFloor.z))) and
             atFloor.downButton->asSequence->at(1).pressed=false and
             atFloor.floorButton->asSequence->at(1).pressed=false) then
@@ -49,7 +45,7 @@ operations
               door.command:=DoorsCommand::open
             end;
             -- If we are moving up and current floor is the last floor at the top
-            -- => Break and open the doors (ex: somebody on highest floor pressed down)
+            -- => Brake and open the doors (ex: somebody on highest floor pressed down)
             if (e.direction=#up and (not (floors->exists(fl|fl.z>atFloor.z))) and
             atFloor.upButton->asSequence->at(1).pressed=false and
             atFloor.floorButton->asSequence->at(1).pressed=false) then
@@ -98,7 +94,7 @@ operations
       -- If the elevator is idle
       --    and all doors are closed
       --    and the next destination is ABOVE the elevator
-      -- => Stop breaking and move upwards
+      -- => Stop braking and move upwards
       if e.direction=#idle and e.z<floors->first.z and
       atFloor=null and e.doors->forAll(d|d.state=DoorsState::closed) then
         e.brake:=false;
@@ -107,7 +103,7 @@ operations
       -- If the elevator is idle
       --   and all doors are closed
       --   and the next destination is BELOW the elevator
-      -- => Stop breaking and move downwards
+      -- => Stop braking and move downwards
       if e.direction=#idle and e.z>floors->first.z and
       atFloor=null and e.doors->forAll(d|d.state=DoorsState::closed) then
         e.brake:=false;
@@ -282,8 +278,7 @@ self.elevator.beeping=false)
 -- self-explanatory
 
 context Elevator
-inv: if (self.person.weight->sum() > self.maxLoad) then (self.beeping = true)
-else (self.beeping = false) endif
+inv: self.beeping = self.person.weight->sum > self.maxLoad
 
 
 -- Invariant 6
