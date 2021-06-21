@@ -8,32 +8,48 @@ attributes
   deltaZ : Real
 operations
   control() begin
+  -- control() can modify the attributes direction, brake, and beeping of all Elevators in the system.
     for e in Elevator.allInstances() do
       declare floors : Sequence(Floor),
               atFloor : Floor;
+      -- floors is a sequence and can find all buttons that are pressed
       floors := (e.floorButton->select(fb|fb.pressed).destFloor->
       union(e.downButton->select(db|db.pressed).downOnFloor)->
       union(e.upButton->select(ub|ub.pressed).upOnFloor))->asSequence;
+      -- Find the floor, where the elevator is in the deltaZ-neighborhood
       atFloor := floors->select(fl|(e.z-fl.z).abs<=self.deltaZ)->at(1);
-      if e.person.weight->sum > e.maxLoad then
-        e.beeping := true;
-      else e.beeping:=false
-      end;
+      -- Check whether the weight of the passengers inside the Elevator is greater than its maxLoad.
+      -- if the weight is unsuitable for maxLoad, Elevator must be beeping.
+      -- if e.person.weight->sum > e.maxLoad then
+      --   e.beeping := true;
+      -- else e.beeping:=false
+      -- end;
+      e.beeping := e.person.weight->sum > e.maxLoad;
+      -- if elevator is in deltaZ-neighboorhood of a floor OR at least one door is not closed,,,
       if atFloor<>null or not (e.doors->forAll(d|d.state=DoorsState::closed)) then
         for door in e.doors do
+          -- If the door at the current floor is closed
           if atFloor=door.floor and door.state=DoorsState::closed then
+            -- If we are moving up and the upButton of the current floor is pressed
+            --   OR if we are moving down and the downButton of the current floor is pressed
+            --   OR if the current floor is the next stop anyway
+            -- => Break and open the doors
             if ((e.direction=#up or e.direction=#idle) and atFloor.upButton->asSequence->at(1).pressed=true) or
             ((e.direction=#down or e.direction=#idle) and atFloor.downButton->asSequence->at(1).pressed=true) or
-            (atFloor.floorButton->asSequence->at(1).pressed=true) then            
+            (atFloor.floorButton->asSequence->at(1).pressed=true) then
               e.brake:=true;
               door.command:=DoorsCommand::open
             end;
+            -- If we are moving down and current floor is the last floor at the bottom
+            -- => Break and open the doors (ex: somebody on lowest floor pressed up)
             if (e.direction=#down and (not (floors->exists(fl|fl.z<atFloor.z))) and
             atFloor.downButton->asSequence->at(1).pressed=false and
             atFloor.floorButton->asSequence->at(1).pressed=false) then
               e.brake:=true;
               door.command:=DoorsCommand::open
             end;
+            -- If we are moving up and current floor is the last floor at the top
+            -- => Break and open the doors (ex: somebody on highest floor pressed down)
             if (e.direction=#up and (not (floors->exists(fl|fl.z>atFloor.z))) and
             atFloor.upButton->asSequence->at(1).pressed=false and
             atFloor.floorButton->asSequence->at(1).pressed=false) then
@@ -41,9 +57,13 @@ operations
               door.command:=DoorsCommand::open
             end
           end;
+          -- If the door at the current floor is opening
+          -- => Open the door
           if door.state=DoorsState::opening and atFloor=door.floor then
             door.command:=DoorsCommand::open
           end;
+          -- If the door at the current floor is open
+          -- => Unpress all buttons belonging to that floor (upButton + downButton on floor AND floorButton in elevator)
           if door.state=DoorsState::open and atFloor=door.floor then
             for ub in atFloor.upButton->select(ub|(e.z-ub.upOnFloor.z).abs<=self.deltaZ) do
               ub.pressed:=false
@@ -55,34 +75,52 @@ operations
               fb.pressed:=false
             end
           end;
+          -- If the elevator is not beeping, and the door is open
+          -- => Close the door
           if e.beeping=false and door.state=DoorsState::open then
-            door.command:=DoorsCommand::close         
+            door.command:=DoorsCommand::close
           end;
+          -- If the door is closing
+          -- => Close the door and set direction to idle
           if door.state=#closing then
             door.command:=DoorsCommand::close;
             e.direction:=#idle
-          end           
+          end
         end
       end;
+      -- If the elevator is not idle
+      --    and all doors are closed
+      -- => Keep the current direction
       if (e.direction<>#idle and
       e.doors->forAll(d|d.state=DoorsState::closed)) then
         e.direction:=e.direction
       end;
+      -- If the elevator is idle
+      --    and all doors are closed
+      --    and the next destination is ABOVE the elevator
+      -- => Stop breaking and move upwards
       if e.direction=#idle and e.z<floors->first.z and
       atFloor=null and e.doors->forAll(d|d.state=DoorsState::closed) then
         e.brake:=false;
         e.direction:=#up
       end;
+      -- If the elevator is idle
+      --   and all doors are closed
+      --   and the next destination is BELOW the elevator
+      -- => Stop breaking and move downwards
       if e.direction=#idle and e.z>floors->first.z and
       atFloor=null and e.doors->forAll(d|d.state=DoorsState::closed) then
         e.brake:=false;
         e.direction:=#down
       end;
+      -- If no buttons are pressed (upButton + downButton on floor and floorButton in elevator)
+      --   and all doors are closed
+      -- => Go idle
       if (floors->isEmpty) and
       e.doors->forAll(d|d.state=#closed) then
         e.direction:=#idle
       end
-    end      
+    end
   end
 end
 
