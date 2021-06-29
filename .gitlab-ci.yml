@@ -1,0 +1,6 @@
+default:
+  before_script:
+    - cd P3
+
+include:
+  - local: '/P3/.gitlab-ci.yml'
