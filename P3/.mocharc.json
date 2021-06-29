@@ -1,0 +1,10 @@
+{
+  "require": [
+    "ts-node/register",
+    "source-map-support/register"
+  ],
+  "spec": [
+    "spec/**/*.spec.ts"
+  ],
+  "reporter": "mocha-junit-reporter"
+}
