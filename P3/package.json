@@ -1,0 +1,33 @@
+{
+  "name": "ts-elevator",
+  "version": "1.0.0",
+  "description": "Another elevator",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "lint": "eslint src/**/*.ts spec/**/*.ts",
+    "build": "tsc",
+    "test": "nyc mocha"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@istanbuljs/nyc-config-typescript": "^1.0.1",
+    "@types/chai": "^4.2.18",
+    "@types/mocha": "^8.2.2",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "chai": "^4.3.4",
+    "eslint": "^7.28.0",
+    "mocha": "^9.0.0",
+    "mocha-junit-reporter": "^2.0.0",
+    "nyc": "^15.1.0",
+    "source-map-support": "^0.5.19",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.2"
+  }
+}
