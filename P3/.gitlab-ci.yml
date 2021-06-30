@@ -11,5 +11,8 @@ default:
 
 install:
     stage: install
+    cache:
+        paths:
+            - node_modules/
     script: 
-        - echo "Install"
+        - npm ci
