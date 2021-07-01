@@ -20,3 +20,8 @@ build:
         - npm install typescript
     script:
         - npm run build
+    artifacts:
+        name: "lib"
+        paths:
+            - .js
+            - .d.ts
