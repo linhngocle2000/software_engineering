@@ -20,18 +20,5 @@ install:
 build:
     stage: build
     script:
-        - docker run node npm run build
-
-lint:
-    stage: test
-    script:
-        - docker run node npm run lint
-
-test:
-    stage: test
-    script:
-        - docker run node npm run test
-    artifacts:
-        reports:
-            junit:
-                - test-results.xml
+        - tsc --version
+        - npm run build
