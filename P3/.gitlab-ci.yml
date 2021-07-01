@@ -16,3 +16,8 @@ install:
             - node_modules/
     script: 
         - npm ci
+
+test:
+    stage: test
+    script:
+        - npm run test
