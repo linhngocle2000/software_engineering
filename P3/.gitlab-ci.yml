@@ -17,4 +17,5 @@ install:
 build:
     stage: build
     script:
+        - npx tsc
         - npm run build
