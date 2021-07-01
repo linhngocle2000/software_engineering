@@ -3,22 +3,18 @@ stages:
     - build
     - test
 
-default:
-    image: node:latest
-    
-    before_script: 
-        - bundle exec
+image: node:latest
+
+cache:
+    paths:
+        - node_modules/
 
 install:
     stage: install
-    cache:
-        paths:
-            - node_modules/
     script: 
         - npm ci
 
 build:
     stage: build
     script:
-        - tsc --version
         - npm run build
