@@ -20,17 +20,17 @@ install:
 build:
     stage: build
     script:
-        - npm run build
+        - docker run node npm run build
 
 lint:
     stage: test
     script:
-        - npm run lint
+        - docker run node npm run lint
 
 test:
     stage: test
     script:
-        - npm run test
+        - docker run node npm run test
     artifacts:
         reports:
             junit:
