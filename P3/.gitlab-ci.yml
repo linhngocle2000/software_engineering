@@ -21,9 +21,6 @@ build:
     stage: build
     script:
         - npm run build
-    artifacts:
-        paths:
-            - lib/
 
 lint:
     stage: test
@@ -34,3 +31,6 @@ test:
     stage: test
     script:
         - npm run test
+    reports:
+        junit:
+            - test-results.xml
