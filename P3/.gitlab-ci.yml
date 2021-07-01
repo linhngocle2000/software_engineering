@@ -16,6 +16,7 @@ install:
 
 build:
     stage: build
+    before_script:
+        - npm install typescript
     script:
-        - npx tsc
         - npm run build
