@@ -29,7 +29,7 @@ lint:
 test:
     stage: test
     script: npm run test
-    coverage: /\(\d+.\d+\%\) covered/
+    coverage: All files[^|]*\|[^|]*\s+([\d\.]+)
     artifacts:
         name: "coverage"
         paths:
