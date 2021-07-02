@@ -6,18 +6,15 @@ stages:
 image: node:latest
 
 cache:
-    paths:
-        - P3/node_modules/
+    paths: P3/node_modules/
 
 install:
     stage: install
-    script: 
-        - npm ci
+    script: npm ci
 
 build:
     stage: build
-    script:
-        - npm run build
+    script: npm run build
     artifacts:
         name: "lib"
         paths:
@@ -26,17 +23,14 @@ build:
 
 lint:
     stage: test
-    script:
-        - npm run lint
+    script: npm run lint
 
 test:
     stage: test
-    script:
-        - npm run test
+    script: npm run test
     coverage: '/Code coverage: \d+\.\d+/'
     artifacts:
         name: "coverage"
-        paths:
-            - P3/coverage/*.html
+        paths: P3/coverage/*.html
         reports:
             junit: P3/*.xml
