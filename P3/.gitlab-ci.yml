@@ -34,3 +34,5 @@ test:
         name: "coverage"
         paths:
             - P3/coverage/*.html
+        reports:
+            junit: P3/*.xml
