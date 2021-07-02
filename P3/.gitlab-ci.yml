@@ -7,7 +7,7 @@ image: node:latest
 
 cache:
     paths:
-        - local: '/P3/node_modules/'
+        - P3/node_modules/
 
 install:
     stage: install
@@ -21,5 +21,5 @@ build:
     artifacts:
         name: "lib"
         paths:
-            - local: '/P3/lib/.js'
-            - local: '/P3/lib/.d.ts'
+            - P3/lib/*.js
+            - P3/lib/*.d.ts
