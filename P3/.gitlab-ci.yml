@@ -28,3 +28,15 @@ lint:
     stage: test
     script:
         - npm run lint
+
+test:
+    stage: test
+    script:
+        - npm run test
+    coverage: '/Code coverage: \d+\.\d+/'
+    artifacts:
+        name: "coverage"
+        paths:
+            - P3/coverage/*.html
+        reports:
+            junit: P3/*.xml
