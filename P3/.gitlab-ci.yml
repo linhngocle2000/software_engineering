@@ -6,7 +6,8 @@ stages:
 image: node:latest
 
 cache:
-    paths: 'P3/node_modules/'
+    paths: 
+        - P3/node_modules/
 
 install:
     stage: install
@@ -31,6 +32,8 @@ test:
     coverage: '/Code coverage: \d+\.\d+/'
     artifacts:
         name: "coverage"
-        paths: 'P3/coverage/*.html'
+        paths:
+            - P3/coverage/*.html
         reports:
-            junit: 'P3/*.xml'
+            junit:
+                - P3/*.xml
