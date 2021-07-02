@@ -7,7 +7,7 @@ image: node:latest
 
 cache:
     paths:
-        - node_modules/
+        - local: '/P3/node_modules/'
 
 install:
     stage: install
@@ -16,12 +16,10 @@ install:
 
 build:
     stage: build
-    before_script:
-        - npm install typescript
     script:
         - npm run build
     artifacts:
         name: "lib"
         paths:
-            - .js
-            - .d.ts
+            - local: '/P3/lib/.js'
+            - local: '/P3/lib/.d.ts'
