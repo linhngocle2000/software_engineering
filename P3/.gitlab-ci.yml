@@ -23,3 +23,8 @@ build:
         paths:
             - P3/lib/*.js
             - P3/lib/*.d.ts
+
+lint:
+    stage: test
+    script:
+        - npm run lint
