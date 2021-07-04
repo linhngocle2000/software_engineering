@@ -1,5 +1,5 @@
 # Task 1-a : three stages : install, build and test
-stage:
+stages:
   - install
   - build
   - test
