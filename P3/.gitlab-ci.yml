@@ -10,7 +10,7 @@ image: node:latest
 # Task 1-c: caching for all jobs
 cache:
   paths:
-    - node_modules
+    - P3/node_modules
 
 # Task 1-d: job install in the stage install
 install:
@@ -23,25 +23,25 @@ install:
 build:
   stage: build
   #compiles the TypeScript source code to Javascript.
-  script: npm build
+  script: npm run build
   #The job saves the generated *.js and *.d.ts files as an artifact called lib.
   artifacts:
     name: lib
     paths:
-      - lib/*.js
-      - lib/*.d.ts
+      - P3/lib/*.js
+      - P3/lib/*.d.ts
 
 # Task 1-f: job lint in the stage test
 lint:
   stage: test
   # execute the configured linter on the source code.
-  script: npm lint
+  script: npm run lint
 
 # Task 1-g: job test in the stage test
 test:
   stage: test
   #execute the tests of the project
-  script: npm test
+  script: npm run test
   #coverage is extracted from the job output
   #the coverage percentage will appear on pipeline
   coverage: '/All files[^|]*\|[^|]*\s+([\d\.]+)/'
@@ -49,6 +49,6 @@ test:
   artifacts:
     name: coverage
     paths:
-      - coverage/*.html
+      - P3/coverage/*.html
     reports:
-      junit: '*.xml'
+      junit: 'P3/*.xml'
