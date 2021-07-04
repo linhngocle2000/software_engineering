@@ -15,16 +15,16 @@ cache:
 # Task 1-d: job install in the stage install
 install:
   stage: install
-#install the dependencies of ts-elevator
-# what is script? script will run in terminal
+  #install the dependencies of ts-elevator
+  # what is script? script will run in terminal
   script: npm ci
 
 # Task 1-e: job build in the stage build
 build:
   stage: build
-#compiles the TypeScript source code to Javascript.
+  #compiles the TypeScript source code to Javascript.
   script: npm build
-#The job saves the generated *.js and *.d.ts files as an artifact called lib.
+  #The job saves the generated *.js and *.d.ts files as an artifact called lib.
   artifacts:
     name: lib
     paths:
