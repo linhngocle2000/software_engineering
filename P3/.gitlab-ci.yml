@@ -10,7 +10,7 @@ image: node:latest
 # Task 1-c: caching for all jobs
 cache:
   paths:
-    - P3/node_modules
+    - P3/node_modules/
 
 # Task 1-d: job install in the stage install
 install:
@@ -26,7 +26,7 @@ build:
   script: npm run build
   #The job saves the generated *.js and *.d.ts files as an artifact called lib.
   artifacts:
-    name: lib
+    name: "lib"
     paths:
       - P3/lib/*.js
       - P3/lib/*.d.ts
@@ -44,11 +44,11 @@ test:
   script: npm run test
   #coverage is extracted from the job output
   #the coverage percentage will appear on pipeline
-  coverage: '/All files[^|]*\|[^|]*\s+([\d\.]+)/'
+  coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
   #it saves the generated HTML coverage report as an artifact called coverage and reports the generated JUnit XML file containing the test results to GitLab.
   artifacts:
-    name: coverage
+    name: "coverage"
     paths:
       - P3/coverage/*.html
     reports:
-      junit: 'P3/*.xml'
+      junit: P3/*.xml
