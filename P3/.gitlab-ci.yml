@@ -50,5 +50,7 @@ test:
     name: "coverage"
     paths:
       - P3/coverage/*.html
+      - P3/coverage/*.js
+      - P3/coverage/*.css
     reports:
-      junit: P3/*.xml
+      junit: P3/test-results.xml
